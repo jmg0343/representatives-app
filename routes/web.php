@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RepresentativesController;
+use Illuminate\Support\Facades\URL;
+
+URL::forceScheme('https');
 
 /*
 |--------------------------------------------------------------------------
