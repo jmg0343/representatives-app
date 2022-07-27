@@ -4,5 +4,6 @@
 
 <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<script type="text/javascript" src="{{ secure_asset('js/bootstrap.bundle.min.js') }}"></script>
 
 <title>Representatives</title>
