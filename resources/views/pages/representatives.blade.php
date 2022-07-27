@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @push('css')
-    <link rel="stylesheet" href="{{ asset('css/representatives.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/representatives.css') }}">
 @endpush
 
 @section('content')
@@ -159,7 +159,7 @@
     </div>
 
     @push('page-scripts')
-        <script type="text/javascript" src="{{ asset('js/representatives.js') }}"></script>
+        <script type="text/javascript" src="{{ secure_asset('js/representatives.js') }}"></script>
     @endpush
 
 @endsection

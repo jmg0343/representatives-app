@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @push('css')
-    <link rel="stylesheet" href="{{ asset('css/representatives.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/representatives.css') }}">
 @endpush
 
 @section('content')
