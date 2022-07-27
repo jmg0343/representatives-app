@@ -20,7 +20,8 @@
         @endif
         <form
             id="addressForm"
-            action="{{ route('reps.find') }}"
+{{--            action="{{ route('reps.find') }}"--}}
+            action="{{ secure_url(route('reps.find')) }}"
             method="POST"
             style="@if(isset($repsInfo)) display: none; @endif"
         >
