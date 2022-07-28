@@ -102,7 +102,7 @@ class RepresentativesController extends BaseController
                     $officeLevel = 'local';
                 }
 
-                $office['official'][] = $officials[$index];
+                $office['official'][] = [$officials[$index], $index];
             }
                 $office['officeLevel'][] = $officeLevel;
                 array_push($officialsArray, $office);

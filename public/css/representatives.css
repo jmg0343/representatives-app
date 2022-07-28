@@ -35,6 +35,7 @@ a.tablinks {
     table-layout: fixed;
     word-wrap: break-word;
 }
+
 /* Social Media Links */
 .socialMediaLink {
     color: inherit;
@@ -61,4 +62,12 @@ a.tablinks {
     right: 20px;
     display: none;
     z-index: 100;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 991px) {
+    .hideOnMobile {
+        display: none;
+    }
 }
