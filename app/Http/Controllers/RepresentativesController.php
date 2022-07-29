@@ -86,6 +86,17 @@ class RepresentativesController extends BaseController
         $concatUrl = "$api_url?key=$api_key&address=$address$city$state";
 
         $repsInfo = Http::get($concatUrl)->collect();
+
+        if (isset($repsInfo['error'])) {
+            $status = isset($repsInfo['error']['status']) ? $repsInfo['error']['status'] : null;
+            $data = [
+                'error' => $repsInfo['error'],
+                'status' => $status
+            ];
+
+            return view('error', $data);
+        }
+
         $offices = collect($repsInfo['offices']);
         $officials = collect($repsInfo['officials']);
 
