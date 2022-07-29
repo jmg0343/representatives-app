@@ -11,7 +11,7 @@
         <div class="container my-5">
             @yield('content')
         </div>
-        <footer class="bg-dark text-center text-white">
+        <footer class="row bg-dark text-center text-white">
             @include('includes.footer')
         </footer>
         @stack('page-scripts')
