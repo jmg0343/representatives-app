@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\GetStateOrStates;
+use App\Services\GoogleApiService;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Http;
 
 class RepresentativesController extends BaseController
 {
@@ -67,25 +66,23 @@ class RepresentativesController extends BaseController
         ];
     }
 
-    public function representatives()
+    public function representatives(GetStateOrStates $getStates)
     {
-        $states = $this->states();
+        $states = $getStates->execute();
 
         return view('pages/representatives')->with(['states' => $states]);
     }
 
-    public function findReps(Request $request)
+    public function findReps(Request $request, GetStateOrStates $getStates)
     {
-        $api_key = config('services.google.key');
-        $api_url = "https://www.googleapis.com/civicinfo/v2/representatives";
-
         $address = $request->input('address');
         $city = str_replace(' ', '', $request->input('city'));
         $state = $request->input('state');
 
-        $concatUrl = "$api_url?key=$api_key&address=$address$city$state";
+        $location = "$address$city$state";
 
-        $repsInfo = Http::get($concatUrl)->collect();
+        $googleApiService = new GoogleApiService();
+        $repsInfo = $googleApiService->makeApiCall('representatives', $location);
 
         if (isset($repsInfo['error'])) {
             $status = isset($repsInfo['error']['status']) ? $repsInfo['error']['status'] : null;
@@ -123,7 +120,7 @@ class RepresentativesController extends BaseController
 
         $data = [
             'repsInfo' => $groupedOfficialsArray,
-            'states' => $this->states()
+            'states' => $getStates->execute()
         ];
 
         return view('pages/representatives', $data);

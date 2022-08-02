@@ -1,9 +1,5 @@
 @extends('layouts.default')
 
-@push('css')
-    <link rel="stylesheet" href="{{ secure_asset('css/representatives.css') }}">
-@endpush
-
 @section('content')
     <div class="mt-5">
         <div class="row">
