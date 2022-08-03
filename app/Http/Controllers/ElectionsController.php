@@ -27,8 +27,6 @@ class ElectionsController extends BaseController
 
         $electionsInfo = $apiService->makeApiCall('voterinfo', $location);
 
-//        dd($electionsInfo);
-
-        return view('pages/electionsInfo');
+        return view('pages/electionsInfo', ['electionsInfo' => $electionsInfo]);
     }
 }
