@@ -88,7 +88,8 @@ class RepresentativesController extends BaseController
             $status = isset($repsInfo['error']['status']) ? $repsInfo['error']['status'] : null;
             $data = [
                 'error' => $repsInfo['error'],
-                'status' => $status
+                'status' => $status,
+                'url' => 'reps'
             ];
 
             return view('error', $data);

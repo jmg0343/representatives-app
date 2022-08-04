@@ -10,7 +10,7 @@
                 <p class="lead">
                     The page you’re looking for doesn't exist.
                 </p>
-                <h3><a href="{{ route('reps') }}" class="btn btn-danger">Try Again</a></h3>
+                <h3><a href="{{ route($url) }}" class="btn btn-danger">Try Again</a></h3>
             </div>
         </div>
     @endif
