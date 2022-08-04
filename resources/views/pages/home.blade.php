@@ -11,12 +11,11 @@
         <div class="row mt-5">
             <div class="col-sm-4">
                 <div class="card text-center">
-                    <div class="card-header">Coming Soon!</div>
+                    <div class="card-header">Elections</div>
                     <div class="card-body">
-                        <h5 class="card-title">Information About Upcoming Elections</h5>
-                        <p class="card-text">Find information about presidential elections as well as state and local elections you're eligible to vote in.</p>
-                        <!-- <a href="upcomingElections.html" class="btn btn-primary">Click Here</a> -->
-                        <a href="#" class="btn btn-secondary">Coming Soon</a>
+                        <h5 class="card-title">Upcoming Elections/Polling Locations</h5>
+                        <p class="card-text">Find information about elections as well as how to register and where to vote.</p>
+                        <a href="{{ route('elections') }}" class="btn btn-primary">Get Started</a>
                     </div>
                 </div>
             </div>
@@ -34,8 +33,8 @@
                 <div class="card text-center">
                     <div class="card-header">Coming Soon!</div>
                     <div class="card-body">
-                        <h5 class="card-title">Find Polling Locations</h5>
-                        <p class="card-text">Enter your address and find polling locations near you as well as hours of operation</p>
+                        <h5 class="card-title">Campaign Donation Information</h5>
+                        <p class="card-text">Find information about who's donating to your elected representatives.</p>
                         <!-- <a href="#" class="btn btn-primary">Click Here</a> -->
                         <a href="#" class="btn btn-secondary">Coming Soon</a>
                     </div>
