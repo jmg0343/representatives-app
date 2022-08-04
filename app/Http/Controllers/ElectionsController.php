@@ -23,9 +23,23 @@ class ElectionsController extends BaseController
         $address = $request->input('address');
         $city = str_replace(' ', '', $request->input('city'));
         $state = $request->input('state');
-        $location = "$address$city$state";
+        $location = "$address $city $state";
 
-        $electionsInfo = $apiService->makeApiCall('voterinfo', $location);
+        $electionsInfo = $apiService->makeApiCall('voterinfo', $location, $id)->toArray();
+
+        foreach ($electionsInfo['state'][0]['electionAdministrationBody'] as $key => &$electionUrl) {
+            try {
+                if (is_string($electionUrl)) {
+                    $parsedUrl = parse_url($electionUrl);
+
+                    if (!isset($parsedUrl['scheme']) && $key != 'name') {
+                        $electionUrl = "https://$electionUrl";
+                    }
+                }
+            } catch (Throwable $t) {
+                continue;
+            }
+        }
 
         return view('pages/electionsInfo', ['electionsInfo' => $electionsInfo]);
     }

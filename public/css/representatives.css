@@ -7,7 +7,7 @@ body > footer {
     top: 100vh;
 }
 
-a.tablinks, button.nav-link {
+a.tablinks, button.nav-link, a {
     color: #2881b3;
 }
 

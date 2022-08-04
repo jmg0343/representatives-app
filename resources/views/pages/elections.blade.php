@@ -5,6 +5,10 @@
         <div class="col-sm-12">
             <div class="text-center">
                 <h2>Upcoming Elections</h2>
+                <p><b>***</b>
+                    Data is reliant on Google Civic API, which is constantly updating.
+                    I am currently working on solutions to fill any gaps in data.
+                    <b>***</b></p>
                 <p>Click to expand and find polling locations</p>
             </div>
             <div class="accordion" id="electionAccordion">
