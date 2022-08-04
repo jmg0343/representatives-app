@@ -152,6 +152,23 @@
                         <br>
                         @endif
                     @endforeach
+                        @else
+                        <div class="text-center">
+                            <h2>Oops! Looks like Google's Civic API hasn't populated this data yet.</h2>
+                            <br>
+                            <h5>
+                                No worries, click below for some helpful links provided by your state's election committee
+                            </h5>
+                            <br>
+                            <button class="btn-sm btn btn-primary"
+                                    type="button"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasRight"
+                                    aria-controls="offcanvasRight"
+                            >
+                                More Info
+                            </button>
+                        </div>
                     @endif
                     </div>
                 </div>
@@ -179,6 +196,24 @@
                             <br>
                         @endif
                     @endforeach
+                        @else
+                            <div class="text-center">
+                                <h2>Oops! Looks like Google's Civic API hasn't populated this data yet.</h2>
+                                <br>
+                                <h5>
+                                    It's also possible that there simply aren't any referendums up for a vote at this time,
+                                    but in any case, click below for some helpful links provided by your state's election committee
+                                </h5>
+                                <br>
+                                <button class="btn-sm btn btn-primary"
+                                        type="button"
+                                        data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasRight"
+                                        aria-controls="offcanvasRight"
+                                >
+                                    More Info
+                                </button>
+                            </div>
                     @endif
                     </div>
                 </div>
@@ -205,46 +240,87 @@
                             </div>
                         @endforeach
                     </div>
+                    @else
+                        <div class="text-center">
+                            <a href="#/"
+                               type="button"
+                               data-bs-toggle="offcanvas"
+                               data-bs-target="#offcanvasRight"
+                               aria-controls="offcanvasRight"
+                            >
+                                More Info
+                            </a>
+                        </div>
                     @endif
                     <br>
                     <h5 class="text-center">Early Voting Locations</h5>
                     @if(isset($electionsInfo['earlyVoteSites']))
-                    @foreach($electionsInfo['earlyVoteSites'] as $pollingLocation)
-                        <div class="card" style="width: 20rem; margin: auto;">
-                            <img src="https://cdn.wccftech.com/wp-content/uploads/2017/03/Google-Maps.jpg" class="card-img-top" alt="Google Map Coming Soon!">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $pollingLocation['address']['locationName'] }}</h5>
-                                <h6>{{ $pollingLocation['address']['line1'] }}</h6>
-                                @if(isset($pollingLocation['address']['line2']))
-                                    <h6>{{ $pollingLocation['address']['line2'] }}</h6>
-                                @endif
-                                <h6>{{ $pollingLocation['address']['city'] }},
-                                    {{ $pollingLocation['address']['state'] }}
-                                    {{ $pollingLocation['address']['zip'] }}
-                                </h6>
+                        <div class="row">
+                        @foreach($electionsInfo['earlyVoteSites'] as $pollingLocation)
+                            <div class="col">
+                                <div class="card" style="width: 20rem; margin: auto;">
+                                    <img src="https://cdn.wccftech.com/wp-content/uploads/2017/03/Google-Maps.jpg" class="card-img-top" alt="Google Map Coming Soon!">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $pollingLocation['address']['locationName'] }}</h5>
+                                        <h6>{{ $pollingLocation['address']['line1'] }}</h6>
+                                        @if(isset($pollingLocation['address']['line2']))
+                                            <h6>{{ $pollingLocation['address']['line2'] }}</h6>
+                                        @endif
+                                        <h6>{{ $pollingLocation['address']['city'] }},
+                                            {{ $pollingLocation['address']['state'] }}
+                                            {{ $pollingLocation['address']['zip'] }}
+                                        </h6>
+                                    </div>
+                                </div>
                             </div>
+                        @endforeach
                         </div>
-                    @endforeach
+                    @else
+                        <div class="text-center">
+                            <a href="#/"
+                               type="button"
+                               data-bs-toggle="offcanvas"
+                               data-bs-target="#offcanvasRight"
+                               aria-controls="offcanvasRight"
+                            >
+                                More Info
+                            </a>
+                        </div>
                     @endif
                     <br>
                     <h5 class="text-center">Ballot Drop Off Locations</h5>
                     @if(isset($electionsInfo['dropOffLocations']))
-                    @foreach($electionsInfo['dropOffLocations'] as $pollingLocation)
-                        <div class="card" style="width: 20rem; margin: auto;">
-                            <img src="https://cdn.wccftech.com/wp-content/uploads/2017/03/Google-Maps.jpg" class="card-img-top" alt="Google Map Coming Soon!">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $pollingLocation['address']['locationName'] }}</h5>
-                                <h6>{{ $pollingLocation['address']['line1'] }}</h6>
-                                @if(isset($pollingLocation['address']['line2']))
-                                    <h6>{{ $pollingLocation['address']['line2'] }}</h6>
-                                @endif
-                                <h6>{{ $pollingLocation['address']['city'] }},
-                                    {{ $pollingLocation['address']['state'] }}
-                                    {{ $pollingLocation['address']['zip'] }}
-                                </h6>
+                        <div class="row">
+                        @foreach($electionsInfo['dropOffLocations'] as $pollingLocation)
+                            <div class="col">
+                                <div class="card" style="width: 20rem; margin: auto;">
+                                    <img src="https://cdn.wccftech.com/wp-content/uploads/2017/03/Google-Maps.jpg" class="card-img-top" alt="Google Map Coming Soon!">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $pollingLocation['address']['locationName'] }}</h5>
+                                        <h6>{{ $pollingLocation['address']['line1'] }}</h6>
+                                        @if(isset($pollingLocation['address']['line2']))
+                                            <h6>{{ $pollingLocation['address']['line2'] }}</h6>
+                                        @endif
+                                        <h6>{{ $pollingLocation['address']['city'] }},
+                                            {{ $pollingLocation['address']['state'] }}
+                                            {{ $pollingLocation['address']['zip'] }}
+                                        </h6>
+                                    </div>
+                                </div>
                             </div>
+                        @endforeach
                         </div>
-                    @endforeach
+                    @else
+                        <div class="text-center">
+                            <a href="#/"
+                               type="button"
+                               data-bs-toggle="offcanvas"
+                               data-bs-target="#offcanvasRight"
+                               aria-controls="offcanvasRight"
+                            >
+                                More Info
+                            </a>
+                        </div>
                     @endif
                 </div>
             </div>
