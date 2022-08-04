@@ -1,17 +1,6 @@
 @extends('layouts.default')
 
-@push('css')
-    <link rel="stylesheet" href="{{ secure_asset('css/representatives.css') }}">
-@endpush
-
 @section('content')
-    <button
-            type="button"
-            class="btn btn-danger btn-floating btn-lg"
-            id="btn-back-to-top"
-    >
-        <i class="fas fa-arrow-up"></i>
-    </button>
     <div class="row">
         @if(empty($repsInfo))
             <h3 class="text-center">Enter your address to see your elected representatives.</h3>
@@ -264,9 +253,5 @@
             </div>
         </div>
     </div>
-
-    @push('page-scripts')
-        <script type="text/javascript" src="{{ secure_asset('js/representatives.js') }}"></script>
-    @endpush
 
 @endsection

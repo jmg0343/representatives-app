@@ -9,6 +9,7 @@
             @include('includes.header')
         </header>
         <div class="container my-5">
+            @include('includes.backToTopButton')
             @yield('content')
         </div>
         <footer class="row bg-dark text-center text-white">

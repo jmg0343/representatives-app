@@ -7,7 +7,7 @@ body > footer {
     top: 100vh;
 }
 
-a.tablinks {
+a.tablinks, button.nav-link, a {
     color: #2881b3;
 }
 
@@ -69,5 +69,11 @@ a.tablinks {
 @media only screen and (max-width: 991px) {
     .hideOnMobile {
         display: none;
+    }
+}
+
+@media screen and (max-width:767px){
+    .nav-tabs#electionInfo > li {
+        flex: 1 0 0%;
     }
 }

@@ -9,16 +9,27 @@
                 <li class="nav-item">
                     <a class="nav-link {{ (request()->is('/')) ? 'active' : '' }}" aria-current="page" href="/">Home</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="upcomingElections.html">Upcoming Elections</a>
-                </li> -->
                 <li class="nav-item">
                     <a
-                        class="nav-link {{
-                                Route::currentRouteNamed('reps') || Route::currentRouteNamed('reps.find') ?
-                                'active' :
-                                ''
-                            }}"
+                        class="nav-link
+                        {{
+                            Route::currentRouteNamed('elections') ?
+                            'active' :
+                            ''
+                        }}"
+                        href="{{ route('elections') }}"
+                    >
+                        Upcoming Elections
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a
+                        class="nav-link
+                        {{
+                            Route::currentRouteNamed('reps') || Route::currentRouteNamed('reps.find') ?
+                            'active' :
+                            ''
+                        }}"
                         href="{{ route('reps') }}"
                     >
                         Current Representatives
