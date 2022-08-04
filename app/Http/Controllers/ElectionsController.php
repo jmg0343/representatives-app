@@ -27,6 +27,17 @@ class ElectionsController extends BaseController
 
         $electionsInfo = $apiService->makeApiCall('voterinfo', $location, $id)->toArray();
 
+        if (isset($electionsInfo['error'])) {
+            $status = isset($electionsInfo['error']['status']) ? $electionsInfo['error']['status'] : null;
+            $data = [
+                'error' => $electionsInfo['error'],
+                'status' => $status,
+                'url' => 'elections'
+            ];
+
+            return view('error', $data);
+        }
+
         foreach ($electionsInfo['state'][0]['electionAdministrationBody'] as $key => &$electionUrl) {
             try {
                 if (is_string($electionUrl)) {
