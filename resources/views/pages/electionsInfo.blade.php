@@ -20,19 +20,19 @@
                     <div class="offcanvas-body">
                         <ul class="list-group list-group-flush">
                         @foreach($electionsInfo['state'][0]['electionAdministrationBody'] as $key => $electionUrl)
-                            <li class="list-group-item text-start">
                                 @if(
                                     $key == 'electionInfoUrl' ||
                                     $key == 'electionRegistrationUrl' ||
                                     $key == 'electionRegistrationConfirmationUrl' ||
                                     $key == 'absenteeVotingInfoUrl' ||
                                     $key == 'votingLocationFinderUrl'
-                                    )
-                                <a href="{{ url($electionUrl) }}" target="_blank">
-                                    {{ ucfirst(preg_replace('/(?<!\ )[A-Z]/', ' $0', $key)) }}
-                                </a>
+                                )
+                                <li class="list-group-item text-start">
+                                    <a href="{{ url($electionUrl) }}" target="_blank">
+                                        {{ ucfirst(preg_replace('/(?<!\ )[A-Z]/', ' $0', $key)) }}
+                                    </a>
+                                </li>
                                 @endif
-                            </li>
                         @endforeach
                         </ul>
                     </div>
@@ -261,12 +261,17 @@
                                 <div class="card" style="width: 20rem; margin: auto;">
                                     <img src="https://cdn.wccftech.com/wp-content/uploads/2017/03/Google-Maps.jpg" class="card-img-top" alt="Google Map Coming Soon!">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ $pollingLocation['address']['locationName'] }}</h5>
-                                        <h6>{{ $pollingLocation['address']['line1'] }}</h6>
-                                        @if(isset($pollingLocation['address']['line2']))
-                                            <h6>{{ $pollingLocation['address']['line2'] }}</h6>
+                                        @if(isset($pollingLocation['address']['locationName']))
+                                            <h5 class="card-title">{{ $pollingLocation['address']['locationName'] }}</h5>
                                         @endif
-                                        <h6>{{ $pollingLocation['address']['city'] }},
+                                        @if(isset($pollingLocation['address']['line1']))
+                                        <h6>{{ $pollingLocation['address']['line1'] }}</h6>
+                                        @endif
+                                        @if(isset($pollingLocation['address']['line2']))
+                                        <h6>{{ $pollingLocation['address']['line2'] }}</h6>
+                                        @endif
+                                        <h6>
+                                            {{ $pollingLocation['address']['city'] }},
                                             {{ $pollingLocation['address']['state'] }}
                                             {{ $pollingLocation['address']['zip'] }}
                                         </h6>
