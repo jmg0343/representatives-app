@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Actions\GetStateOrStates;
 use App\Services\GoogleApiService;
+use App\Services\RetrieveDataService;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
@@ -80,6 +81,11 @@ class RepresentativesController extends BaseController
         $state = $request->input('state');
 
         $location = "$address$city$state";
+
+        $test = new RetrieveDataService();
+        $test->getData('representatives', $location);
+
+//        dd($testData);
 
         $googleApiService = new GoogleApiService();
         $repsInfo = $googleApiService->makeApiCall('representatives', $location);

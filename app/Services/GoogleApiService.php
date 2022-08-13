@@ -8,7 +8,7 @@ class GoogleApiService
 {
     const API_URL = "https://www.googleapis.com/civicinfo/v2/";
 
-    public function makeApiCall ($type, $location = null, $elecionId = null)
+    public function makeApiCall ($type, $location = null, $electionId = null)
     {
         $api_key = config('services.google.key');
         $url = self::API_URL . "$type?key=$api_key";
@@ -22,8 +22,8 @@ class GoogleApiService
 
         $url = "$url&address=$location";
 
-        if ($elecionId != null) {
-            $url = "$url&electionId=$elecionId";
+        if ($electionId != null) {
+            $url = "$url&electionId=$electionId";
         }
 
         return Http::get($url)->collect();
