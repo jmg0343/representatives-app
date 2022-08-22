@@ -104,7 +104,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $contest['office'] }}</h5>
                                     <p class="card-text">{{ $contest['district']['name'] }}</p>
-                                    <p class="card-text">Number Elected: {{ $contest['numberElected'] }}</p>
+                                    <p class="card-text">Number Elected: {{ $contest['numberElected'] ?? ' ' }}</p>
 
                                     {{-- START MODAL --}}
                                 <!-- Button trigger modal -->
@@ -183,11 +183,11 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $contest['referendumTitle'] }}</h5>
-                                    <h6>{{ $contest['referendumSubtitle'] }}</h6>
+                                    <h6>{{ $contest['referendumSubtitle'] ?? ' ' }}</h6>
                                     <br>
-                                    <p class="blockquote text-start">{{ $contest['referendumText'] }}</p>
+                                    <p class="blockquote text-start">{{ $contest['referendumText'] ?? ' '}}</p>
                                     <br>
-                                    <p class="card-text">{{ $contest['district']['name'] }}</p>
+                                    <p class="card-text">{{ $contest['district']['name'] ?? ' ' }}</p>
                                 </div>
                                 <div class="card-footer text-muted">
                                     Election Day: {{ $electionsInfo['election']['electionDay'] }}
