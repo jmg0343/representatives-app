@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Actions\GetStateOrStates;
 use App\Services\GoogleApiService;
+use App\Services\RetrieveDataService;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
@@ -15,6 +16,9 @@ class ElectionsController extends BaseController
     {
         $electionsInfo = $apiService->makeApiCall('elections');
 
+        $retrieveDataService = new RetrieveDataService();
+        $retrieveDataService->getElectionData();
+
         return view('pages/elections', ['elections' => $electionsInfo]);
     }
 
@@ -24,6 +28,10 @@ class ElectionsController extends BaseController
         $city = str_replace(' ', '', $request->input('city'));
         $state = $request->input('state');
         $location = "$address $city $state";
+
+        // create instance of RetrieveDataService and get election data
+        $retrieveDataService = new RetrieveDataService();
+        $retrieveDataService->getElectionDetails($location, $id);
 
         $electionsInfo = $apiService->makeApiCall('voterinfo', $location, $id)->toArray();
 

@@ -13,18 +13,22 @@ class AddOffices
                 foreach ($officials as $index => $official) {
                     $office = new Office;
 
-                    $office->name = $officeRecord['name'];
-                    $office->ocd_id = $officeRecord['divisionId'];
-                    $office->level = $officeRecord['levels']['0'] ?? null;
+                    $findOfficeInDb = $office::where('rep_name', '=', $official['name'])->first();
 
-                    if ($officialIndex == $index) {
-                        $office->rep_name = $official['name'];
-                        $office->party = $official['party'] ?? 'N/A';
-                        $office->phone = $official['phones'][0] ?? 'N/A';
-                        $office->address = $official['geocodingSummaries'][0]['queryString'] ?? 'N/A';
-                        $office->email = $official['emails'][0] ?? 'N/A';
-                        $office->image = $official['photoUrl'] ?? null;
-                        $office->save();
+                    if ($findOfficeInDb == null) {
+                        $office->name = $officeRecord['name'];
+                        $office->ocd_id = $officeRecord['divisionId'];
+                        $office->level = $officeRecord['levels']['0'] ?? null;
+
+                        if ($officialIndex == $index) {
+                            $office->rep_name = $official['name'];
+                            $office->party = $official['party'] ?? 'N/A';
+                            $office->phone = $official['phones'][0] ?? 'N/A';
+                            $office->address = $official['geocodingSummaries'][0]['queryString'] ?? 'N/A';
+                            $office->email = $official['emails'][0] ?? 'N/A';
+                            $office->image = $official['photoUrl'] ?? null;
+                            $office->save();
+                        }
                     }
                 }
             }

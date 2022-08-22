@@ -18,7 +18,7 @@ class CreateAddressesTable extends Migration
             $table->string('address');
             $table->string('state');
             $table->string('city');
-            $table->string('zip');
+            $table->string('zip')->nullable();
             $table->string('county')->nullable();
             $table->timestamps();
         });
